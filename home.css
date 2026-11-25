@@ -1,0 +1,417 @@
+/* =========================================
+   DESIGN SYSTEM VARIABLES
+   ========================================= */
+:root {
+  --bg-page: #0b1324;
+  --card-blush: #14213d;
+  --card-accent: #1d4ed8;
+  --border-subtle: rgba(255, 255, 255, 0.16);
+  --motif-color: rgba(243, 166, 158, 0.6);
+
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
+
+  --radius-card: 22px;
+  --radius-inner: 16px;
+  --gap-grid: 16px;
+
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+}
+
+/* =========================================
+   RESET & BASE
+   ========================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  padding: 16px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================================
+   LAYOUT WRAPPER & SHARED CARD STYLE
+   ========================================= */
+.page-wrapper {
+  max-width: 1360px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-grid);
+}
+
+.bento-card {
+  background-color: var(--card-blush);
+  border-radius: var(--radius-card);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* =========================================
+   TOP NAVBAR
+   ========================================= */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+}
+
+.brand {
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.brand-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.brand strong {
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links a {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.2s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: var(--text-primary);
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* =========================================
+   DESKTOP BENTO GRID (3 COLUMNS)
+   ========================================= */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr 1fr;
+  gap: var(--gap-grid);
+  min-height: calc(100vh - 110px);
+}
+
+.left-stack,
+.center-stack,
+.right-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-grid);
+}
+
+/* =========================================
+   LEFT COLUMN: HERO & BIO CARDS
+   ========================================= */
+.hero-card {
+  flex: 1.45;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.motif-top-right {
+  width: 104px;
+  height: 104px;
+  align-self: flex-end;
+  color: var(--motif-color);
+}
+
+.hero-title {
+  font-size: clamp(2.1rem, 3.2vw, 3.15rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  max-width: 15ch;
+  margin-top: 24px;
+}
+
+.hero-title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.12em;
+}
+
+.bio-card {
+  flex: 1;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.motif-small {
+  width: 32px;
+  height: 32px;
+  color: var(--motif-color);
+}
+
+.bio-text {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 38ch;
+}
+
+/* =========================================
+   CENTER COLUMN: PORTRAIT & CONTACT CTA
+   ========================================= */
+.portrait-card {
+  flex: 1.45;
+  overflow: hidden;
+  min-height: 320px;
+}
+
+.portrait-card img {
+  transition: transform 0.5s ease;
+}
+
+.portrait-card:hover img {
+  transform: scale(1.03);
+}
+
+.contact-cta-card {
+  flex: 1;
+  background-color: var(--card-accent);
+  color: #ffffff;
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 210px;
+}
+
+.contact-cta-card:hover {
+  transform: translateY(-3px);
+}
+
+.cta-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cta-subtext {
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: #ffffff;
+}
+
+.arrow-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.contact-cta-card:hover .arrow-icon,
+.featured-project:hover .arrow-icon,
+.project-row:hover .arrow-icon {
+  transform: translate(3px, -3px);
+}
+
+.cta-title {
+  font-size: clamp(1.9rem, 2.5vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* =========================================
+   RIGHT COLUMN: PROJECTS & SOCIALS
+   ========================================= */
+.projects-card {
+  flex: 1;
+  padding: 26px 26px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.featured-project {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-name {
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.project-thumb {
+  width: 100%;
+  height: 185px;
+  border-radius: var(--radius-inner);
+  overflow: hidden;
+}
+
+.project-thumb img {
+  transition: transform 0.4s ease;
+}
+
+.featured-project:hover .project-thumb img {
+  transform: scale(1.04);
+}
+
+.project-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-evenly;
+}
+
+.project-list li:not(:last-child) {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.project-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.socials-card {
+  padding: 22px 26px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 12px;
+}
+
+.socials-card a {
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.socials-card a:hover {
+  color: var(--text-primary);
+}
+
+/* =========================================
+   TABLET & MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: 1fr 1fr;
+    min-height: auto;
+  }
+
+  .right-stack {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 680px) {
+  body {
+    padding: 12px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 14px;
+    padding: 18px 20px;
+    text-align: center;
+  }
+
+  .nav-links {
+    gap: 22px;
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .right-stack {
+    grid-column: span 1;
+  }
+
+  .hero-card,
+  .bio-card,
+  .projects-card,
+  .contact-cta-card {
+    padding: 24px 20px;
+  }
+
+  .motif-top-right {
+    width: 76px;
+    height: 76px;
+  }
+
+  .portrait-card {
+    height: 360px;
+    min-height: auto;
+  }
+
+  .contact-cta-card {
+    min-height: 165px;
+  }
+}
